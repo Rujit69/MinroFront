@@ -1,0 +1,421 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#crop-view {
+  position: relative;
+  z-index: 1;
+}
+
+#myDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  width: min(600px, 90vw);
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  color: white;
+}
+
+#myDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#infoDialogue {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  width: min(800px, 90vw);
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#infoDialogue::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Custom scrollbar styling */
+#infoDialogue::-webkit-scrollbar {
+  width: 8px;
+}
+
+#infoDialogue::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+
+#infoDialogue::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+#infoDialogue::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+#resultDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  width: min(600px, 90vw);
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#resultDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Custom scrollbar styling */
+#resultDialog::-webkit-scrollbar {
+  width: 8px;
+}
+
+#resultDialog::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+
+#resultDialog::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+#resultDialog::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+#myDialog button {
+  margin: 10px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+#drop-area {
+  position: relative;
+  height: min(300px, 50vh);
+  width: min(500px, 90vw);
+  padding: clamp(20px, 5vw, 30px);
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#drop-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#drop-area span {
+  pointer-events: none;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: #333;
+}
+
+#img-view {
+  width: clamp(80px, 20vw, 120px);
+  height: clamp(80px, 20vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+
+#img-view img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.upload {
+  outline: 0;
+  align-items: center;
+  background-color: #00ff04;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all 0.14s ease-out;
+  white-space: nowrap;
+}
+
+.upload:hover {
+  box-shadow: 4px 4px 0 #1900ff;
+  transform: translate(-4px, -4px);
+}
+
+.upload:focus-visible {
+  outline-offset: 1px;
+}
+
+.cancel {
+  outline: 0;
+  align-items: center;
+  background: transparent;
+  border: 1px solid #ff0000;
+  background-color: #de6a6a;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all 0.14s ease-out;
+  white-space: nowrap;
+  color: #000;
+}
+
+.cancel:hover {
+  box-shadow: 4px 4px 0 #ffffff;
+  transform: translate(-4px, -4px);
+}
+
+.cancel:focus-visible {
+  outline-offset: 1px;
+}
+
+.pick-another {
+  outline: 0;
+  align-items: center;
+  background: transparent;
+  border: 1px solid #aa00ff;
+  background-color: #a600ff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all 0.14s ease-out;
+  white-space: nowrap;
+  color: #000;
+}
+
+.pick-another:hover {
+  box-shadow: 4px 4px 0 #ffd900;
+  transform: translate(-4px, -4px);
+}
+
+.pick-another:focus-visible {
+  outline-offset: 1px;
+}
+
+.infoOkay {
+  outline: 0;
+  align-items: center;
+  background: transparent;
+  border: 1px solid #ff0000;
+  background-color: #de6a6a;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 16px);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all 0.14s ease-out;
+  white-space: nowrap;
+  color: #000;
+}
+
+.infoOkay:hover {
+  box-shadow: 4px 4px 0 #ffffff;
+  transform: translate(-4px, -4px);
+}
+
+.infoOkay:focus-visible {
+  outline-offset: 1px;
+}
+
+/* Responsive button container */
+#buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  #drop-area {
+    height: min(250px, 40vh);
+    width: min(400px, 85vw);
+  }
+
+  #infoDialogue,
+  #resultDialog,
+  #myDialog {
+    max-width: 95vw;
+    max-height: 95vh;
+    border-radius: 8px;
+  }
+
+  #buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  #drop-area {
+    height: min(200px, 35vh);
+    width: min(300px, 90vw);
+    padding: 15px;
+  }
+
+  #img-view {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hero {
+    padding: 10px;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 10px;
+  }
+
+  #drop-area {
+    height: 150px;
+  }
+}
+
+a {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(249, 115, 22, 0.6);
+  background: linear-gradient(135deg, #fb923c, #f97316);
+}
+

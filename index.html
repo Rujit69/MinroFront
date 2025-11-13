@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rujit</title>
+    <link rel="stylesheet" href="croppie.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <video autoplay muted loop id="bg-video">
+      <source
+        src="video.mp4
+      "
+        type="video/mp4"
+      />
+      Your browser does not support HTML5 video.
+    </video>
+    <div>
+      <button
+        style="
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          font-weight: bold;
+          font-family: Arial, sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        "
+        onclick="document.getElementById('infoDialogue').showModal()"
+      >
+        i
+      </button>
+
+      <dialog id="infoDialogue">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+          "
+        >
+          <!-- Header -->
+          <div
+            style="
+              width: 100%;
+              background: linear-gradient(
+                135deg,
+                rgba(99, 102, 241, 0.3),
+                rgba(168, 85, 247, 0.3)
+              );
+              padding: 40px 32px;
+              text-align: center;
+              border-radius: 12px 12px 0 0;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            "
+          >
+            <h1
+              style="
+                margin: 0 0 8px 0;
+                font-size: 32px;
+                font-weight: 700;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+              "
+            >
+              AI Generated Face Detection
+            </h1>
+            <p
+              style="
+                margin: 0;
+                font-size: 16px;
+                opacity: 0.95;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+              "
+            >
+              Using DenseNet-121
+            </p>
+          </div>
+
+          <!-- Content -->
+          <div style="width: 100%; padding: 32px; overflow-y: auto">
+            <!-- About Section -->
+            <div style="margin-bottom: 32px">
+              <h2
+                style="
+                  margin: 0 0 16px 0;
+                  font-size: 24px;
+                  font-weight: 600;
+                  color: rgba(255, 255, 255, 0.95);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                About the Project
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  line-height: 1.7;
+                  font-size: 15px;
+                  color: rgba(255, 255, 255, 0.9);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                This project utilizes deep learning technology to detect
+                AI-generated fake faces. We implemented a DenseNet-121
+                architecture to analyze facial features and detect manipulated
+                or synthetically generated images with high accuracy.
+              </p>
+            </div>
+
+            <!-- Technical Implementation Section -->
+            <div style="margin-bottom: 32px">
+              <h2
+                style="
+                  margin: 0 0 16px 0;
+                  font-size: 24px;
+                  font-weight: 600;
+                  color: rgba(255, 255, 255, 0.95);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                Technical Implementation
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  line-height: 1.7;
+                  font-size: 15px;
+                  color: rgba(255, 255, 255, 0.9);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                We trained our model on a diverse dataset of real and
+                AI-generated faces, enabling it to identify subtle artifacts and
+                inconsistencies that are typically present in synthetic images.
+                The DenseNet-121 architecture was chosen for its efficient
+                feature reuse and propagation capabilities, which are
+                particularly useful for detecting the nuanced patterns in
+                AI-generated faces.
+              </p>
+            </div>
+
+            <!-- Project Team Section -->
+            <div style="margin-bottom: 32px">
+              <h2
+                style="
+                  margin: 0 0 20px 0;
+                  font-size: 24px;
+                  font-weight: 600;
+                  color: rgba(255, 255, 255, 0.95);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                Project Team (click to contact)
+              </h2>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                  gap: 16px;
+                "
+              >
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.08);
+                    padding: 16px;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                  "
+                >
+                  <a
+                    href="https://www.linkedin.com/in/rujit-shrestha-4427bb35a/"
+                  >
+                    RS
+                  </a>
+                  <div
+                    style="
+                      font-weight: 600;
+                      margin-bottom: 4px;
+                      font-size: 15px;
+                    "
+                  >
+                    Rujit Shrestha
+                  </div>
+                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT032</div>
+                </div>
+
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.08);
+                    padding: 16px;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                  "
+                >
+                  <a href="https://www.instagram.com/rosh_aura_/"> RS </a>
+                  <div
+                    style="
+                      font-weight: 600;
+                      margin-bottom: 4px;
+                      font-size: 15px;
+                    "
+                  >
+                    Roshna Shrestha
+                  </div>
+                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT033</div>
+                </div>
+
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.08);
+                    padding: 16px;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                  "
+                >
+                  <a href="https://www.linkedin.com/in/sandhyaadhikari/">
+                    SA
+                  </a>
+                  <div
+                    style="
+                      font-weight: 600;
+                      margin-bottom: 4px;
+                      font-size: 15px;
+                    "
+                  >
+                    Sandhya Adhikari
+                  </div>
+                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT038</div>
+                </div>
+
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.08);
+                    padding: 16px;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                  "
+                >
+                  <a href="https://www.linkedin.com/in/kalyan-subedi/"> KS </a>
+                  <div
+                    style="
+                      font-weight: 600;
+                      margin-bottom: 4px;
+                      font-size: 15px;
+                    "
+                  >
+                    Kalyan Subedi
+                  </div>
+                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT018</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Academic Context Section -->
+            <div style="margin-bottom: 32px">
+              <h2
+                style="
+                  margin: 0 0 16px 0;
+                  font-size: 24px;
+                  font-weight: 600;
+                  color: rgba(255, 255, 255, 0.95);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                Academic Context
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  line-height: 1.7;
+                  font-size: 15px;
+                  color: rgba(255, 255, 255, 0.9);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                This project was developed as a minor project by Computer
+                Engineering (BCT) students at Himalaya College of Engineering,
+                Chyasal, Lalitpur (Affiliated to Tribhuvan University). It
+                combines our knowledge of machine learning, computer vision, and
+                web development to create a practical application for detecting
+                increasingly sophisticated AI-generated imagery.
+              </p>
+            </div>
+
+            <!-- How It Works Section -->
+            <div style="margin-bottom: 32px">
+              <h2
+                style="
+                  margin: 0 0 16px 0;
+                  font-size: 24px;
+                  font-weight: 600;
+                  color: rgba(255, 255, 255, 0.95);
+                  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                "
+              >
+                How It Works
+              </h2>
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.08);
+                  padding: 20px;
+                  border-radius: 8px;
+                  border: 1px solid rgba(255, 255, 255, 0.15);
+                "
+              >
+                <div
+                  style="margin-bottom: 12px; line-height: 1.7; font-size: 15px"
+                >
+                  <span style="font-weight: 600; color: rgba(168, 85, 247, 1)"
+                    >1.</span
+                  >
+                  Upload an image through the interface
+                </div>
+                <div
+                  style="margin-bottom: 12px; line-height: 1.7; font-size: 15px"
+                >
+                  <span style="font-weight: 600; color: rgba(168, 85, 247, 1)"
+                    >2.</span
+                  >
+                  Our model processes the image using the trained DenseNet-121
+                  algorithm
+                </div>
+                <div
+                  style="margin-bottom: 12px; line-height: 1.7; font-size: 15px"
+                >
+                  <span style="font-weight: 600; color: rgba(168, 85, 247, 1)"
+                    >3.</span
+                  >
+                  The system analyzes facial features and patterns to determine
+                  authenticity
+                </div>
+                <div style="line-height: 1.7; font-size: 15px">
+                  <span style="font-weight: 600; color: rgba(168, 85, 247, 1)"
+                    >4.</span
+                  >
+                  Results are displayed with a confidence score indicating how
+                  certain the model is
+                </div>
+              </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div
+              style="
+                background: rgba(0, 0, 0, 0.2);
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                text-align: center;
+              "
+            >
+              <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600">
+                © 2025 AI Generated Face Detection Project. All rights reserved.
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font-size: 13px;
+                  opacity: 0.8;
+                  line-height: 1.6;
+                "
+              >
+                This work is protected under the Copyright Act 2059 (2002) of
+                Nepal. Unauthorized reproduction, distribution, or modification
+                of this software and its contents is prohibited without prior
+                written permission from the copyright holders.
+              </p>
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div
+            style="
+              width: 100%;
+              padding: 24px 32px;
+              background: rgba(0, 0, 0, 0.15);
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+              border-radius: 0 0 12px 12px;
+            "
+          >
+            <button
+              class="infoOkay"
+              onclick="document.getElementById('infoDialogue').close()"
+            >
+              Got it!
+            </button>
+          </div>
+        </div>
+      </dialog>
+
+      <h1
+        style="
+          position: absolute;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 2rem;
+          color: white;
+          text-align: center;
+        "
+      >
+        Ai Generated Face Detection
+      </h1>
+      <dialog id="resultDialog">
+        <h1 id="result">test</h1>
+        <button
+          id="closeResultDialog"
+          style="
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            position: relative;
+            z-index: 10;
+          "
+        >
+          Okay
+        </button>
+      </dialog>
+      <div class="hero">
+        <br />
+        <label for="fileInput" id="drop-area">
+          <div
+            id="view"
+            style="
+              border: dashed 2px #000000;
+              height: 300px;
+              width: 400px;
+              text-align: center;
+              border-radius: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              gap: 12px;
+              background-size: cover;
+            "
+          >
+            <input type="file" accept="image/*" id="fileInput" />
+            <div id="img-view">
+              <img src="icon.png" style="opacity: 0.5" />
+            </div>
+            <span style="color: aliceblue">Click or drop an image here</span>
+          </div>
+        </label>
+        <!-- buttons -->
+        <div
+          id="buttons"
+          style="padding: 10px; margin-top: 20px; display: none"
+        >
+          <button class="upload" id="submit">Submit</button>
+          <button class="cancel" id="crop">Crop</button>
+          <button class="pick-another" id="pick-another">New pic</button>
+        </div>
+        <!-- buttons -->
+      </div>
+
+      <dialog
+        id="myDialog"
+        style="
+          padding: 20px;
+          position: relative;
+          border: none;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <div id="crop-view"></div>
+        <div
+          style="
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+          "
+        >
+          <button id="confirm_crop">Confirm</button>
+          <button id="cancel_crop">Cancel</button>
+        </div>
+      </dialog>
+    </div>
+    <script src="croppie.js"></script>
+    <script type="module">
+      import { Client } from "https://esm.run/@gradio/client";
+      window.gradioClient = Client;
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
