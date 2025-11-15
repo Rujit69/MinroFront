@@ -9,20 +9,15 @@ const upload = document.getElementById("submit");
 const resultText = document.getElementById("result");
 const resultDialog = document.getElementById("resultDialog");
 const closeResultDialog = document.getElementById("closeResultDialog");
+
+//! close the info dialog when clicking outside of it
 const infoD = document.getElementById("infoDialogue");
-
 infoD.addEventListener("click", (event) => {
-  const rect = dialog.getBoundingClientRect();
-  const clickedInDialog =
-    event.clientX >= rect.left &&
-    event.clientX <= rect.right &&
-    event.clientY >= rect.top &&
-    event.clientY <= rect.bottom;
-
-  if (!clickedInDialog) {
+  if (event.target === infoD) {
     infoD.close();
   }
 });
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 closeResultDialog.addEventListener("click", () => {
   resultDialog.close();

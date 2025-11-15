@@ -431,25 +431,18 @@
       <div class="hero">
         <br />
         <label for="fileInput" id="drop-area">
-          <div
-            id="view"
-            style="
-              border: dashed 2px #000000;
-              height: 300px;
-              width: 400px;
-              text-align: center;
-              border-radius: 20px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-direction: column;
-              gap: 12px;
-              background-size: cover;
-            "
-          >
+          <div id="view">
             <input type="file" accept="image/*" id="fileInput" />
-            <div id="img-view">
-              <img src="icon.png" style="opacity: 0.5" />
+            <div>
+              <span
+                style="
+                  font-size: 4rem;
+                  color: rgba(0, 255, 255, 0.5);
+                  text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+                "
+              >
+                ⬆️
+              </span>
             </div>
             <span style="color: aliceblue">Click or drop an image here</span>
           </div>

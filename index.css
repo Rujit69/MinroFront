@@ -157,14 +157,81 @@
   height: min(300px, 50vh);
   width: min(500px, 90vw);
   padding: clamp(20px, 5vw, 30px);
-  background-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 25, 47, 0.9) 0%,
+    rgba(18, 40, 60, 0.7) 100%
+  );
+  backdrop-filter: blur(10px);
   text-align: center;
   border-radius: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated shimmer overlay */
+#drop-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glowing border effect */
+#drop-area::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 255, 0),
+    rgba(0, 255, 255, 0.3),
+    rgba(0, 255, 136, 0.3),
+    rgba(0, 255, 255, 0)
+  );
+  border-radius: 20px;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+#drop-area:hover::after {
+  opacity: 1;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 #drop-area input[type="file"] {
@@ -174,12 +241,31 @@
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 #drop-area span {
   pointer-events: none;
   font-size: clamp(0.875rem, 2vw, 1rem);
-  color: #333;
+  color: rgba(0, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#drop-area:hover {
+  height: min(350px, 55vh);
+  width: min(550px, 92vw);
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), 0 0 60px rgba(0, 255, 255, 0.2),
+    inset 0 0 60px rgba(0, 255, 255, 0.1);
+}
+
+#drop-area:hover span {
+  color: rgba(0, 255, 255, 1);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 1);
+  transform: translateY(-5px);
 }
 
 #img-view {
@@ -345,6 +431,20 @@
   align-items: center;
 }
 
+#view {
+  border: dashed 2px #000000;
+  height: 300px;
+  width: 400px;
+  text-align: center;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background-size: cover;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   #drop-area {
@@ -364,6 +464,20 @@
     width: 100%;
     max-width: 300px;
   }
+
+  #view {
+    border: dashed 2px #000000;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 480px) {
@@ -371,6 +485,20 @@
     height: min(200px, 35vh);
     width: min(300px, 90vw);
     padding: 15px;
+  }
+
+  #view {
+    border: dashed 2px #000000;
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background-size: cover;
   }
 
   #img-view {
@@ -418,4 +546,3 @@ a:hover {
   box-shadow: 0 6px 15px rgba(249, 115, 22, 0.6);
   background: linear-gradient(135deg, #fb923c, #f97316);
 }
-
