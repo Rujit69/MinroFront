@@ -3,35 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rujit</title>
+    <title>Rujit - AI Face Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="croppie.css" />
     <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
-    <video autoplay muted loop playsinline id="bg-video">
-      <source src="video.mp4" type="video/mp4" />
-    </video>
-    <div>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
       <button
-        style="
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          border: none;
-          background-color: #007bff;
-          color: white;
-          font-weight: bold;
-          font-family: Arial, sans-serif;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        "
+        class="info-btn"
         onclick="document.getElementById('infoDialogue').showModal()"
       >
         i
@@ -166,95 +154,91 @@
                   gap: 16px;
                 "
               >
-                <div
-                  style="
-                    background: rgba(255, 255, 255, 0.08);
-                    padding: 16px;
-                    border-radius: 8px;
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                  "
+                <a
+                  href="https://www.linkedin.com/in/rujit-shrestha-4427bb35a/"
+                  id="animate"
                 >
-                  <a
-                    href="https://www.linkedin.com/in/rujit-shrestha-4427bb35a/"
+                  <text
+                    style="
+                      font-weight: 600;
+                      margin-bottom: 4px;
+                      font-size: 15px;
+                      color: white;
+                    "
                   >
                     RS
-                  </a>
+                  </text>
                   <div
                     style="
                       font-weight: 600;
                       margin-bottom: 4px;
                       font-size: 15px;
+                      color: white;
                     "
                   >
                     Rujit Shrestha
                   </div>
-                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT032</div>
-                </div>
+                  <div style="font-size: 13px; opacity: 0.8; color: white">
+                    HCE078BCT032
+                  </div>
+                </a>
 
-                <div
-                  style="
-                    background: rgba(255, 255, 255, 0.08);
-                    padding: 16px;
-                    border-radius: 8px;
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                  "
-                >
-                  <a href="https://www.instagram.com/rosh_aura_/"> RS </a>
+                <a href="https://www.instagram.com/rosh_aura_/" id="animate">
+                  <text style="color: white"> RS </text>
                   <div
                     style="
                       font-weight: 600;
                       margin-bottom: 4px;
                       font-size: 15px;
+                      color: white;
                     "
                   >
                     Roshna Shrestha
                   </div>
-                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT033</div>
-                </div>
+                  <div style="font-size: 13px; opacity: 0.8; color: white">
+                    HCE078BCT033
+                  </div>
+                </a>
 
-                <div
-                  style="
-                    background: rgba(255, 255, 255, 0.08);
-                    padding: 16px;
-                    border-radius: 8px;
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                  "
+                <a
+                  id="animate"
+                  href="https://www.linkedin.com/in/sandhyaadhikari/"
                 >
-                  <a href="https://www.linkedin.com/in/sandhyaadhikari/">
-                    SA
-                  </a>
+                  <text style="color: white"> SA </text>
                   <div
                     style="
                       font-weight: 600;
                       margin-bottom: 4px;
                       font-size: 15px;
+                      color: white;
                     "
                   >
                     Sandhya Adhikari
                   </div>
-                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT038</div>
-                </div>
+                  <div style="font-size: 13px; opacity: 0.8; color: white">
+                    HCE078BCT038
+                  </div>
+                </a>
 
-                <div
-                  style="
-                    background: rgba(255, 255, 255, 0.08);
-                    padding: 16px;
-                    border-radius: 8px;
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                  "
+                <a
+                  id="animate"
+                  href="https://www.linkedin.com/in/kalyan-subedi/"
                 >
-                  <a href="https://www.linkedin.com/in/kalyan-subedi/"> KS </a>
+                  <text style="color: white"> KS </text>
                   <div
                     style="
                       font-weight: 600;
                       margin-bottom: 4px;
                       font-size: 15px;
+                      color: white;
                     "
                   >
                     Kalyan Subedi
                   </div>
-                  <div style="font-size: 13px; opacity: 0.8">HCE078BCT018</div>
-                </div>
+                  <div style="font-size: 13px; opacity: 0.8; color: white">
+                    HCE078BCT018
+                  </div>
+                </a>
               </div>
             </div>
 
@@ -395,94 +379,42 @@
         </div>
       </dialog>
 
-      <h1
-        style="
-          position: absolute;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 2rem;
-          color: white;
-          text-align: center;
-        "
-      >
-        Ai Generated Face Detection
-      </h1>
+      <h1 class="main-title">AI Generated Face Detection</h1>
+
       <dialog id="resultDialog">
         <h1 id="result">test</h1>
-        <button
-          id="closeResultDialog"
-          style="
-            margin: 10px;
-            padding: 8px 16px;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            background-color: #007bff;
-            color: white;
-            position: relative;
-            z-index: 10;
-          "
-        >
-          Okay
-        </button>
+        <button id="closeResultDialog" class="btn-primary">Okay</button>
       </dialog>
+
       <div class="hero">
-        <br />
         <label for="fileInput" id="drop-area">
-          <div id="view">
+          <div id="view" class="preview-box">
             <input type="file" accept="image/*" id="fileInput" />
-            <div>
-              <span
-                style="
-                  font-size: 4rem;
-                  color: rgba(0, 255, 255, 0.5);
-                  text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-                "
-              >
-                ⬆️
-              </span>
+            <div class="upload-icon-wrapper">
+              <span class="upload-icon">⬆️</span>
             </div>
-            <span style="color: aliceblue">Click or drop an image here</span>
+            <span class="instruction-text">Click or drop an image here</span>
           </div>
         </label>
+
         <!-- buttons -->
-        <div
-          id="buttons"
-          style="padding: 10px; margin-top: 20px; display: none"
-        >
-          <button class="upload" id="submit">Submit</button>
-          <button class="cancel" id="crop">Crop</button>
-          <button class="pick-another" id="pick-another">New pic</button>
+        <div id="buttons" class="action-buttons">
+          <button class="btn upload" id="submit">Submit</button>
+          <button class="btn cancel" id="crop">Crop</button>
+          <button class="btn pick-another" id="pick-another">New pic</button>
         </div>
         <!-- buttons -->
       </div>
 
-      <dialog
-        id="myDialog"
-        style="
-          padding: 20px;
-          position: relative;
-          border: none;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        "
-      >
+      <dialog id="myDialog" class="crop-dialog">
         <div id="crop-view"></div>
-        <div
-          style="
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 10px;
-          "
-        >
-          <button id="confirm_crop">Confirm</button>
-          <button id="cancel_crop">Cancel</button>
+        <div class="crop-actions">
+          <button id="confirm_crop" class="btn confirm">Confirm</button>
+          <button id="cancel_crop" class="btn cancel-crop">Cancel</button>
         </div>
       </dialog>
     </div>
+
     <script src="croppie.js"></script>
     <script type="module">
       import { Client } from "https://esm.run/@gradio/client";
